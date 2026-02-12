@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Registration Form</title>
+
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    overflow:hidden;
+}
+
+/* ===== FIXED BOY ===== */
+.boy{
+    position:fixed;
+    width:130px;
+    height:200px;
+    background:url("https://cdn-icons-png.flaticon.com/512/4140/4140048.png") no-repeat center/contain;
+    left:-150px;
+    bottom:120px;
+    animation:boyEnter 2s forwards;
+    z-index:10;
+}
+
+@keyframes boyEnter{
+    to{
+        left:40px;   /* ✅ FIX: bring boy into screen */
+    }
+}
+
+.boy.next{
+    transform:translateX(20px);
+}
+
+.boy.back{
+    transform:translateX(-20px);
+}
+
+/* ===== FORM ===== */
+.container{
+    max-width:900px;
+    width:100%;
+    padding:30px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+}
+
+header{
+    font-size:24px;
+    font-weight:600;
+    text-align:center;
+    margin-bottom:20px;
+    position:relative;
+}
+
+header::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:50%;
+    transform:translateX(-50%);
+    width:50px;
+    height:4px;
+    background:#667eea;
+    border-radius:10px;
+}
+
+form{
+    position:relative;
+    min-height:500px;
+    overflow:hidden;
+}
+
+.form{
+    position:absolute;
+    width:100%;
+    transition:0.5s ease;
+}
+
+.form.second{
+    opacity:0;
+    pointer-events:none;
+    transform:translateX(100%);
+}
+
+form.secActive .form.second{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateX(0);
+}
+
+form.secActive .form.first{
+    opacity:0;
+    pointer-events:none;
+    transform:translateX(-100%);
+}
+
+.title{
+    font-size:18px;
+    font-weight:500;
+    margin-bottom:10px;
+}
+
+.fields{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.input-field{
+    flex:1;
+    min-width:calc(50% - 15px);
+    display:flex;
+    flex-direction:column;
+}
+
+.input-field label{
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.input-field input{
+    height:45px;
+    padding:0 15px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+button{
+    height:50px;
+    background:#667eea;
+    border:none;
+    border-radius:8px;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.backBtn{
+    background:#ccc;
+    color:#333;
+    flex:1;
+}
+
+.submitBtn{
+    flex:1;
+}
+
+@media(max-width:768px){
+    .boy{ display:none; }
+    .input-field{ min-width:100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BOY -->
+<div class="boy" id="boy"></div>
+
+<!-- FORM -->
+<div class="container">
+<header>Registration</header>
+
+<form id="regForm">
+
+<!-- STEP 1 -->
+<div class="form first">
+    <span class="title">Personal Details</span>
+
+    <div class="fields">
+        <div class="input-field">
+            <label>Full Name</label>
+            <input type="text" required>
+        </div>
+
+        <div class="input-field">
+            <label>Email</label>
+            <input type="email" required>
+        </div>
+
+        <div class="input-field">
+            <label>Password</label>
+            <input type="password" id="password" required>
+        </div>
+
+        <div class="input-field">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPass" required>
+        </div>
+    </div>
+
+    <button type="button" class="nextBtn">
+        Next <i class="uil uil-navigator"></i>
+    </button>
+</div>
+
+<!-- STEP 2 -->
+<div class="form second">
+    <span class="title">Address Details</span>
+
+    <div class="fields">
+        <div class="input-field">
+            <label>Phone</label>
+            <input type="tel" required>
+        </div>
+
+        <div class="input-field">
+            <label>City</label>
+            <input type="text" required>
+        </div>
+
+        <div class="input-field">
+            <label>Country</label>
+            <input type="text" required>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button type="button" class="backBtn">
+            Back <i class="uil uil-navigator"></i>
+        </button>
+
+        <button type="submit" class="submitBtn">
+            Register <i class="uil uil-check-circle"></i>
+        </button>
+    </div>
+</div>
+
+</form>
+</div>
+
+<script>
+const form = document.getElementById("regForm");
+const nextBtn = document.querySelector(".nextBtn");
+const backBtn = document.querySelector(".backBtn");
+const boy = document.getElementById("boy");
+
+nextBtn.onclick = () => {
+    if(password.value !== confirmPass.value){
+        alert("Passwords do not match!");
+        return;
+    }
+    form.classList.add("secActive");
+    boy.classList.add("next");
+    boy.classList.remove("back");
+};
+
+backBtn.onclick = () => {
+    form.classList.remove("secActive");
+    boy.classList.add("back");
+    boy.classList.remove("next");
+};
+</script>
+
+</body>
+</html>
