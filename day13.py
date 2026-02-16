@@ -120,29 +120,46 @@
 
 
 
-class ShoppingCart:
-    def __init__(self):
-        self.items={}
+# class ShoppingCart:
+#     def __init__(self):
+#         self.items={}
 
-    def add_items(self,name,price):
-        self.items[name]=price
-        print(f"{name} add with price {price}")
-    def remove_items(self,name):
-        if name in self.items:
-                del self.items[name]
-                print(f"{name} remove from cart")
-        else:
-             print("item is not found")
-    def total_price(self):
-         total=sum(self.items.values())
-         return total
-    
+#     def add_items(self,name,price):
+#         self.items[name]=price
+#         print(f"{name} add with price {price}")
+#     def remove_items(self,name):
+#         if name in self.items:
+#                 del self.items[name]
+#                 print(f"{name} remove from cart")
+#         else:
+#              print("item is not found")
+#     def total_price(self):
+#          total=sum(self.items.values())
+#          return total
+# cart = ShoppingCart()
+# cart.add_items("Shirt", 1200)
+# cart.add_items("Shoes", 2500)
+# cart.add_items("Watch", 3000)
 
-cart = ShoppingCart()
-cart.add_items("Shirt", 1200)
-cart.add_items("Shoes", 2500)
-cart.add_items("Watch", 3000)
+# cart.remove_items("Shoes")
 
-cart.remove_items("Shoes")
-
-print("Total Price:", cart.total_price())
+# print("Total Price:", cart.total_price())
+class Payment:
+    def pay(self, amount):
+        pass
+class CreditCardPayment(Payment):
+    def pay(self, amount):
+        print("Paid", amount, "using Credit Card")
+class UPIPayment(Payment):
+    def pay(self, amount):
+        print("Paid", amount, "using UPI")
+class CashPayment(Payment):
+    def pay(self, amount):
+        print("Paid", amount, "using Cash")
+payments = [
+    CreditCardPayment(),
+    UPIPayment(),
+    CashPayment()
+]
+for p in payments:
+    p.pay(1000)
