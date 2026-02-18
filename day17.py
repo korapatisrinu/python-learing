@@ -1,0 +1,10 @@
+import numpy as np 
+# # arr=np.array([10,20,30,40,50])
+# # print(arr)
+# # arr=np.zeros(6,dtype=int)
+# # print(arr)
+# arr=np.arange(1, 21)
+# print(arr)
+a = np.array([1, 2, 3,4])
+b = np.array([5])
+print(a * b)

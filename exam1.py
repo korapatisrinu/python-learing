@@ -131,7 +131,7 @@
 #     sum+=d
 #     n=n//10
 # print(sum)
-n=[1,2,3,4,5,6]
+# n=[1,2,3,4,5,6]
 # sum=[]
 # for num in  n:
 #     if num%2==0:
@@ -145,7 +145,7 @@ n=[1,2,3,4,5,6]
 # print(c)
 
 
-n=[10,20,2,3,99,44]
+# n=[10,20,2,3,99,44]
 # l=n[0]
 # for i in n:
 #     if i > l:
@@ -221,9 +221,82 @@ n=[10,20,2,3,99,44]
 # else:
 #     print("not paildrown")
 
-n=int(input("enter number:"))
-a=0
-b=1
-for i in range(n):
-    print(a,end=" ")
-    a , b =b,a+b
+# n=int(input("enter number:"))
+# a=0
+# b=1
+# for i in range(n):
+#     print(a,end=" ")
+#     a , b =b,a+b
+
+
+
+
+# 🔥 Two Sum Problem (Very Popular)
+
+# Input:
+
+# nums = [2, 7, 11, 15]
+# target = 9
+
+
+# Output:
+
+# [2, 7]
+
+
+# 👉 Find TWO numbers whose sum = target
+# nums=[2,7,11,15]
+# target=9
+# for i in range(len(nums)):
+#     for j in range(i+1,len(nums)):
+#         if nums[i]+nums[j]==target:
+#             print(nums[i],nums[j])
+
+
+
+
+# 🔥 Remove Duplicates from List (keep order)
+
+# Input:
+
+# [1, 2, 2, 3, 4, 4, 5]
+
+
+# Output:
+
+# [1, 2, 3, 4, 5]
+
+# 🧠 Think Carefully
+
+# 👉 You must NOT sort
+# 👉 Keep original order
+
+
+# nums=[1, 2, 2, 3, 4, 4, 5]
+# r=[]
+# for i in nums:
+#     if i not in r:
+#         r.append(i)
+# print(r)
+    
+
+
+
+#     🔥 First Non-Repeating Character
+
+# Input:
+
+# "programming"
+
+
+# Output:
+
+# 'p'
+
+
+# 👉 First character that appears only once
+text="programming"
+for ch in text:
+    if text.count(ch)==1:
+        print(ch)
+        break
